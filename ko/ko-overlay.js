@@ -113,7 +113,7 @@
     "Green flag": "그린 플래그",
     "Kestrel GP": "케스트렐 GP",
     "Safety car deployed": "세이프티카 투입",
-    "Safety car in this lap. Green flag.": "이번 바퀴 세이프티카 투입. 그린 플래그.",
+    "Safety car in this lap. Green flag.": "이번 바퀴 세이프티카 철수. 그린 플래그.",
     "Ember Motors": "엠버 모터스",
     "Stopped on track": "트랙 정지",
     "stopped on track": "트랙 정지",
@@ -228,7 +228,33 @@
     "Kestrel": "케스트렐",
     "pit": "피트",
     "Trackside": "트랙사이드",
-    "Stake 50 100 250 All in": "베팅액 50 100 250 올인"
+    "Stake 50 100 250 All in": "베팅액 50 100 250 올인",
+    "KM/H": "km/h",
+    "WEAR": "마모",
+    "LAST": "최근",
+    "GRID": "그리드",
+    "LEAD": "선두",
+    "SELECT": "선택",
+    "INPUT": "입력",
+    "Resume": "재개",
+    "Zoom in": "확대",
+    "Zoom out": "축소",
+    "Turn left": "좌회전",
+    "Turn right": "우회전",
+    "Picture": "화면",
+    "post-processing": "후처리",
+    "Picture post-processing": "화면 후처리",
+    "repaints the whole world": "온 섬을 새로 그립니다",
+    "race control call": "레이스 컨트롤 지시",
+    "corners": "코너",
+    "teams": "팀",
+    "cars": "대",
+    "on pole for": "폴 포지션:",
+    "starts P": "그리드 P",
+    "now P": "현재 P",
+    "bank": "잔고",
+    "fire them any time": "언제든 발사 가능",
+    "tag": "태그"
   };
 
   // 대소문자 무시 사전 (게임이 같은 문구를 대문자로도 씀)
@@ -237,6 +263,35 @@
 
   // 정규식 규칙: 동적으로 조립되는 문구 (긴 것부터 적용)
   var R = [
+    [/^Grid set for (\d+) laps\. (.+) on pole for (.+)\.$/, "그리드 확정: $1바퀴. $2, $3 소속 폴 포지션."],
+    [/^Lights out in (\d+)s ·?$/, "$1초 후 출발 ·"],
+    [/^Bet placed: (.+) on #(\d+) (.+) at (.+)\.$/, "베팅 완료: $2번 $3에 $1, 배당 $4."],
+    [/^Bet lost: (.+)\. #(\d+) (\w+) did not win\.$/, "베팅 실패: −$1. $2번 $3 우승하지 못했습니다."],
+    [/^Bet won: #(\d+) (\w+) pays (.+)\. \+(.+)$/, "베팅 성공: $1번 $2, 배당 $3, +$4"],
+    [/^#(\d+) (.+) · starts P(\d+) · pays (.+) · (.+) cr back if this car wins$/, "#$1 $2 · 그리드 $3번 · 배당 $4 · 우승 시 $5cr 환급"],
+    [/^(.+) wins the Harbor Lights Grand Prix for (.+)!$/, "$1, $2 소속으로 하버 라이츠 그랑프리 우승!"],
+    [/^Fastest lap: (\w+) ([\d.]+)s on (.+)\.$/, "최고 랩: $1 $2초 ($3)"],
+    [/^Safety car deployed: (\w+) stopped on track\.$/, "세이프티카 투입: $1 트랙 정지."],
+    [/^(\w+) stops: (.+) to (.+) in ([\d.]+)s \(slow stop, stuck wheel nut\)\.$/, "$1 피트 스톱: $2 → $3, $4초 (휠 너트 고착으로 지연)."],
+    [/^(\w+) stops: (.+) to (.+) in ([\d.]+)s\.$/, "$1 피트 스톱: $2 → $3, $4초."],
+    [/^(\w+): box this lap for (.+?)\.$/, "$1: 이번 바퀴 피트인 – $2."],
+    [/^Box (\w+)$/, "$1 피트인"],
+    [/^(\w+) boxing$/, "$1 피트인 중"],
+    [/^(.+) pulls over with smoke from the engine cover\.$/, "$1, 엔진 커버에서 연기가 나며 정차합니다."],
+    [/^(.+) spins on the wet track and keeps going\.$/, "$1, 젖은 노면에서 스핀했지만 계속 주행합니다."],
+    [/^(.+) is in the wall\. Out of the race\.$/, "$1, 벽에 충돌. 경기에서 탈락합니다."],
+    [/^Your car #(\d+) (\w+) is out\. The bet is lost\.$/, "내 차량 #$1 $2 리타이어. 베팅은 실패입니다."],
+    [/^Drone show launching: "(.+)"\.$/, "드론 쇼 시작: \"$1\""],
+    [/^LAP (\d+)\/(\d+)$/, "바퀴 $1/$2"],
+    [/^track (\d+)% wet$/, "노면 젖음 $1%"],
+    [/^lap (\d+) of (\d+)$/, "$2바퀴 중 $1바퀴"],
+    [/^(\d+) corners$/, "$1개 코너"],
+    [/^(\d+) teams$/, "$1개 팀"],
+    [/^(\d+) cars$/, "$1대"],
+    [/^(\d+) laps?$/, "$1바퀴"],
+    [/^now P(\d+)$/, "현재 $1위"],
+    [/^bank (.+)$/, "잔고 $1"],
+    [/^(\d+) cr back if this car wins$/, "우승 시 $1cr 환급"],
     [/^LEVEL\s+(\d+)$/, '레벨 $1'],
     [/^(\d+)\s*pts$/, '$1점'],
     [/^(\d+)\s*st$/, '$1위'],
@@ -264,6 +319,8 @@
     if (!t) return null;
     if (Object.prototype.hasOwnProperty.call(D, t)) return D[t];
     if (Object.prototype.hasOwnProperty.call(IDX, t.toLowerCase())) return IDX[t.toLowerCase()];
+    if (t.charAt(0) === '·') { var lm = tr(t.replace(/^·\s*/, '')); if (lm !== null) return '· ' + lm; }
+    if (/ ·$/.test(t)) { var tm2 = tr(t.replace(/\s*·$/, '')); if (tm2 !== null) return tm2 + ' ·'; }
     var m;
     if ((m = /^v\s+(.+)$/.exec(t))) { var r1 = tr(m[1]); if (r1) return 'vs ' + r1; }
     if ((m = /^(.+?):\s*(On|Off)$/.exec(t))) {
