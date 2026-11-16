@@ -1,0 +1,256 @@
+<div><small>${TEAMS[fc.team].n.toUpperCase()}</small><span class="big">${fc.code}</span></div><div><small>KM/H</small><span class="big">${(fc.v*3.6)|0}</span></div><div><small>TYRE</small><span class="big" style="color:${TYRE[fc.tyre].c}">${TYRE[fc.tyre].n}</span></div><div><small>WEAR</small><span class="big">${Math.min(99,fc.wear*100|0)}%</span></div><div><small>LAST</small><span class="big">${fmtLap(fc.last)}</span></div>
+<button type="button" data-no="${c.no}"><i style="background:${TEAMS[c.team].c}"></i><b>${c.no}</b><span>${c.code}</span><em>P${c.grid} · ${oddsFor(c.grid)}×</em></button>
+<b>${(L/1000).toFixed(3)} km</b> · 22 corners · 20 cars · 10 teams<br>Leader <b>${lead.name}</b> · fastest lap <b>${race.fl.id>=0?race.fl.t.toFixed(2)+'s':'–'}</b>
+${wn} · ${clock()}<br>Track wet <b>${(env.wet*100)|0}%</b> · best tyre <b>${{D:'slick',I:'inter',W:'wet'}[idealClass(env.wet)]}</b>
+<div class="th"><span>LAP ${race.started?race.lap:0}/${S.laps}</span><span>${race.sc>0?'SC':race.finished?'FIN':''}</span></div>
+One HTML file. Canvas 2D, no libraries, no images. Keys: Space pause · C camera · R rain · N night · F fireworks · H hide HUD.
+${c.code} stops: ${TYRE[old].n} to ${TYRE[c.tyre].n} in ${c.stopLen.toFixed(1)}s${c.slow?' (slow stop, stuck wheel nut)':''}.
+<b>BET</b> #${c.no} ${c.code} · ${cr(bet.amt)} @ ${bet.odds}× · ${out?'OUT':'now P'+p} · bank ${cr(bank)}
+Virtual credits only. Any of the 20 cars can win: form is reshuffled before every race.
+Grid set for ${S.laps} laps. ${cars[0].name} on pole for ${TEAMS[cars[0].team].n}.
+${c.code}: box this lap for ${TYRE[tyre].n}s${why?' ('+why+')':''}.
+${c.name} wins the Harbor Lights Grand Prix for ${TEAMS[c.team].n}!
+Fastest lap: ${c.code} ${c.last.toFixed(2)}s on ${TYRE[c.tyre].n}s.
+hsl(${(d.u*1.1+env.t*50+show.form*90)%360|0},100%,${night?66:52}%)
+<div><b>P${i+1}</b> ${o[i].name} · ${TEAMS[o[i].team].n}</div>
+Bet placed: ${cr(a)} on #${c.no} ${c.name} at ${bet.odds}×.
+Bet lost: −${cr(bet.amt)}. #${c.no} ${c.code} did not win.
+Bet won: #${c.no} ${c.code} pays ${bet.odds}×. +${cr(win)}
+${c.name} pulls over with smoke from the engine cover.
+Pick a car number, enter a stake, then start the race.
+Weather radar: rain reaching the circuit within a lap.
+Lights out in ${Math.max(0,Math.ceil(race.betT))}s ·
+Your car #${c.no} ${c.code} is out. The bet is lost.
+Flyover: five jets inbound over the main straight.
+${c.code} spins on the wet track and keeps going.
+<b>${lap}</b><span class="${k?'k'+k:''}"></span>
+You are on the pit wall for ${TEAMS[S.team].n}.
+Desert round: sand, palms and turquoise water.
+The crowd starts a wave around the circuit.
+${c.name} is in the wall. Out of the race.
+Rain easing. The track will start to dry.
+Drone show launching: "${S.droneText}".
+Time-lapse: a full day every 27 seconds
+Winter round: the island is under snow.
+Let the weather change during the race
+Race engineer calls the stops for me
+Round 7 · Isla Verano street circuit
+Safety car in this lap. Green flag.
+Autumn colours across the island.
+Start the next race automatically
+Rain is falling on Isla Verano.
+Flares lit in the grandstands.
+track ${(env.wet*100)|0}% wet
+Neon night grid switched on.
+click a driver to ride along
+lap ${race.lap} of ${S.laps}
+saturate(1.2) contrast(1.06)
+Team order: save the tyres.
+drag to turn, wheel to zoom
+Bank refilled to 1,000 cr.
+Lights out and away we go.
+Team order: balanced pace.
+Harbor Lights Grand Prix
+repaints the whole world
+See through near stands
+Summer on Isla Verano.
+Team order: push now.
+Clean feed (no HUD)
+Safety car deployed
+Start without a bet
+fire them any time
+race control call
+${c.code} boxing
+stopped on track
+<h2>Podium</h2>
+Chequered flag
+Place your bet
+tyres are gone
+Bet and start
+Box ${c.code}
+your two cars
+Ember Motors
+Race control
+Team beacons
+Thunderstorm
+newest first
+track is dry
+Sky & track
+Volt Racing
+on the grid
+Crowd wave
+Drone show
+Green flag
+Kestrel GP
+Safety car
+Save tyres
+Tilt-shift
+Turn right
+use strict
+FABLE 5.2
+Fireworks
+Formation
+Incidents
+Lindqvist
+Marchetti
+Name tags
+Turn left
+Tyre wear
+Balanced
+Castillo
+Ferreira
+Kowalski
+New race
+Next set
+Nordwind
+Obsidian
+Outlines
+Overcast
+Pit wall
+Sky text
+Sorensen
+Vignette
+Zoom out
+autoNext
+10 cars
+20 cars
+Circuit
+Flyover
+Halcyon
+Laurent
+Monarch
+Onboard
+Picture
+Verdant
+Weather
+Zoom in
+Achebe
+Action
+All in
+Aurora
+Autumn
+Brandt
+Camera
+Desert
+Dither
+Driver
+Duarte
+Filter
+Flares
+Haddad
+Island
+Lasers
+Lights
+Medium
+Moreau
+Normal
+Petrov
+Resume
+Rivals
+SELECT
+Season
+Summer
+Tanaka
+Timing
+Winter
+autoWx
+Angle
+Bloom
+Chaos
+Clear
+Clock
+Cloud
+Crowd
+Field
+INPUT
+Inter
+Light
+Night
+Novak
+Okoro
+Pause
+Pixel
+Reset
+Retro
+Reyes
+Singh
+Sound
+Speed
+Stake
+Storm
+Tidal
+Vance
+en-US
+Bank
+Best
+Dawn
+Dusk
+Easy
+GRID
+Hard
+Heat
+Heli
+LEAD
+Laps
+Neon
+Noir
+Pace
+Push
+Race
+Rain
+Real
+Show
+Snow
+Soft
+Team
+Turn
+Tyre
+View
+Wind
+ACH
+BRA
+Box
+CAS
+CRT
+DUA
+Day
+FER
+Fog
+Gap
+HAD
+ITO
+Ito
+KOW
+LAP
+LAU
+LIN
+MAR
+MOR
+Med
+NOV
+OKO
+OUT
+Off
+PET
+PIT
+Pit
+REY
+SIN
+SOR
+TAN
+VAN
+WIN
+Wet
+all
+bet
+crt
+day
+hud
+out
+pit
+red
+vig
+2d
+cr
+on
+tr
